@@ -1,0 +1,18 @@
+<div class="container">
+    <div class="container--card">
+        <!-- <div class="card" *ngFor="let avenger of avengersArray"> -->
+        <div class='card' [ngClass]="{'selected': avenger.isActive }" *ngFor="let avenger of avengersArray" (click) = select(avenger)>
+        
+            <h2>{{avenger.hero}}</h2>
+            <h3>{{avenger.name}}</h3>
+            <img [src]="avenger.img" alt="">
+            <a [href]="avenger.link">Show more info</a>
+        </div>
+    </div>
+    <div class="container-counter">
+        <div *ngIf="!isHidden">
+            En la lista no hay elementos activos
+        </div>
+        <div *ngIf="isHidden">En la lista hay {{ numSelected }} elementos activos</div>
+    </div>
+</div>

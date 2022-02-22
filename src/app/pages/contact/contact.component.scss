@@ -1,0 +1,26 @@
+.error, span{
+    font-size: small;
+    color: red;
+}
+
+/* Chrome, Safari, Edge, Opera */
+ input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+-webkit-appearance: none;
+margin: 0;
+}
+
+/* Firefox */
+ input[type=number] {
+-moz-appearance: textfield;
+}
+
+.container-results{
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    border: solid 1px;
+
+    &--element{
+        margin: 1rem;
+    }
+}
