@@ -17,6 +17,7 @@ export class GalleryComponent implements OnInit, OnDestroy {
   constructor() { }
 
   ngOnInit(): void {
+    
   }
 
   ngOnDestroy(): void{

@@ -7,22 +7,28 @@ import { HomeComponent } from './pages/home/home.component';
 const routes: Routes = [
   {
     path: '',
-    redirectTo:'Home',
-    pathMatch: 'full'
+    // redirectTo:'Home',
+
+    pathMatch: 'full',
+    loadChildren: () => import('src/app/pages/home/home.module').then(m => m.HomeModule)
 
   },
   {
-    path: 'Home',
-    component: HomeComponent
+    path: 'home',
+    loadChildren: () => import('src/app/pages/home/home.module').then(m => m.HomeModule)
 
   },
   {
-    path: 'Gallery',
-    component: GalleryComponent
+    path: 'gallery',
+    loadChildren: () => import('src/app/pages/gallery/gallery.module').then(m => m.GalleryModule)
   },
   {
-    path: 'Contact',
-    component: ContactComponent
+    path: 'contact',
+    loadChildren: () => import('src/app/pages/contact/contact.module').then(m => m.ContactModule)
+  },
+  {
+    path: 'characters',
+    loadChildren: () => import('src/app/pages/character-list/character-list.module').then(m => m.CharacterListModule)
   }
 
 ];

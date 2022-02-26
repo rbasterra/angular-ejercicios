@@ -9,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 export class HeaderComponent implements OnInit {
   public title: string = 'Ejercicio Rutas';
 
-  public navList: string[] =['Home', 'Gallery', 'Contact'];
+  public navList: string[] =['Home', 'Gallery', 'Contact', 'Characters'];
   isActive: boolean = false;
 
   constructor(private router: Router) { }
@@ -18,7 +18,7 @@ export class HeaderComponent implements OnInit {
   }
 
   public activateLink(item:string){
-    return this.router.url === '/'+item;
+    return this.router.url === '/'+item.toLowerCase();
     
     
   }

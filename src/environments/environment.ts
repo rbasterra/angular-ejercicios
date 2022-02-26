@@ -3,7 +3,10 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  marvelApiKey: 'f2ed942d9fc733f4bbed3601167ddcb7',
+  baseApiUrl: 'http://gateway.marvel.com/v1/public/',
+  imgSize: 'portrait_fantastic'
 };
 
 /*

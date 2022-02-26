@@ -1,0 +1,34 @@
+.character {
+    &__element{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        margin: 1rem;
+        padding: 1rem;
+        width: 80%;
+        text-align: center;
+
+        box-shadow: 0 0 5px 0 goldenrod;
+
+        &:hover{
+            box-shadow: 0 0 20px 0 goldenrod;
+            cursor: pointer;
+        }
+        
+    }
+
+    &__title{
+        width: 10rem;
+        height:5rem;
+
+        & h2{
+            color: salmon;
+            font-weight: 200;
+            font-size: larger;
+            margin: 0 0 1rem 0;
+            padding: 5px;
+
+        }
+    }
+}

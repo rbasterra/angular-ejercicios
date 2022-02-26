@@ -7,7 +7,7 @@
             <li *ngFor="let item of navList">
                 <a 
                     
-                    [routerLink]="['/', item]"
+                    [routerLink]="['/', item.toLowerCase()]"
                     [ngClass]="{'page-selected': activateLink(item)}"
                     
                 >
