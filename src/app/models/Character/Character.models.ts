@@ -18,3 +18,7 @@ export interface Character {
     events?: EventList,  // A resource list of events in which this character appears
     series?: SeriesList  // A resource list of series in which this character appears
 }
+
+export interface CharacterCard{
+    state: 'default' | 'flipped';
+}

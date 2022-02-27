@@ -8,7 +8,7 @@
                 <a 
                     
                     [routerLink]="['/', item.toLowerCase()]"
-                    [ngClass]="{'page-selected': activateLink(item)}"
+                    routerLinkActive="page-selected"
                     
                 >
                     {{item}}

@@ -1,6 +1,8 @@
+import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CharacterComponent } from './character/character.component';
+
 
 
 
@@ -9,7 +11,8 @@ import { CharacterComponent } from './character/character.component';
     CharacterComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    RouterModule,
   ],
   exports: [
     CharacterComponent

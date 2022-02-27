@@ -3,3 +3,30 @@
     flex-flow: row wrap;
     justify-content: space-around;
 }
+
+
+// .pagination-control {
+//     & li {
+//         color:white;
+//         & a{
+//             color:white;
+//         }
+//     }
+//     color: white;
+// }
+
+// .ngx-pagination{
+//     color:white;
+// }
+
+.footer-page{
+    width:100%
+}
+
+.pagination-control{
+    display: flex;
+    flex-flow:row wrap;
+    justify-content: space-around;
+    width:100%;
+}
+

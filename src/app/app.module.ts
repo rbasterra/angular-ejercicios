@@ -1,3 +1,5 @@
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 import { CharacterListModule } from './pages/character-list/character-list.module';
 
 import { NgModule } from '@angular/core';
@@ -12,6 +14,7 @@ import { HomeModule } from './pages/home/home.module';
 import { ContactModule } from './pages/contact/contact.module';
 import { GalleryModule } from './pages/gallery/gallery.module';
 import { CoreModule } from './core/core.module';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 
 @NgModule({
@@ -27,7 +30,9 @@ import { CoreModule } from './core/core.module';
     HomeModule,
     ContactModule,
     CoreModule,
-    CharacterListModule
+    CharacterListModule,
+    NgxPaginationModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

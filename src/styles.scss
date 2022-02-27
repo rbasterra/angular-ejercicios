@@ -10,8 +10,42 @@
 body{
     margin:0;
     background-color: black;
+    color: white;    
+    
+}
+
+// .pagination-control .ngx-pagination .current{
+//     background-color: red;
+//     color:white;
+// }
+
+// .ngx-pagination a{
+//     color:white;
+// }
+
+// .pagination-control{
+//     background-color: red;
+//     color:white;
+// }
+
+.ngx-pagination{
+    // background-color: rgb(122, 212, 87);
     color: white;
-  
-    
-    
+}
+.ngx-pagination a{
+    color:white;
+}
+.ngx-pagination li{
+    color:white;
+}
+
+.ngx-pagination span{
+    color:#cacaca;
+}
+
+.pagination-next a{
+    color:#cacaca;
+}
+.current{
+    color:white;
 }

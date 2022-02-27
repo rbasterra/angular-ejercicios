@@ -1,9 +1,20 @@
-<div class="character__element"
-    *ngIf="character"
->
-<div class="character__title">
-    <h2>{{character.name}}</h2>
-</div>
-<img [src]="characterImg" alt="">
+<ng-container *ngIf="character">
 
-</div>
+    <div class="character__element"
+        (click)="elementClicked()"
+        [@elementFlip]="data.state"
+    >
+        <div class="face front">
+            <div class="character__title">
+                <h2>{{character.name}}</h2>
+            </div>
+            <img [src]="characterImg" alt="">
+        </div>
+        <div class="face back">
+            <p>{{character.description}}</p>
+            <a [href]="[characterUrl?.url]">More info</a>
+        </div>
+
+    </div>
+
+</ng-container>

@@ -6,10 +6,16 @@
         align-items: center;
         margin: 1rem;
         padding: 1rem;
-        width: 80%;
+        // width: 80%;
         text-align: center;
-
+        border-radius: 5px;
         box-shadow: 0 0 5px 0 goldenrod;
+
+        position: relative;
+        transform-style: preserve-3d;
+
+        height: 350px;
+        width: 200px;
 
         &:hover{
             box-shadow: 0 0 20px 0 goldenrod;
@@ -19,16 +25,52 @@
     }
 
     &__title{
-        width: 10rem;
+        width: 100%;
         height:5rem;
 
         & h2{
             color: salmon;
             font-weight: 200;
             font-size: larger;
-            margin: 0 0 1rem 0;
+            margin: 1rem 0 1rem 0;
             padding: 5px;
 
         }
+    }
+}
+
+.face {
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: inherit;
+    backface-visibility: hidden;
+
+    > img {
+        // width: 100%;
+        // height: 100%;
+        object-fit: cover;
+        border-radius: inherit;
+    }
+}
+
+.back {
+    transform: rotateY(180deg);
+
+    & p{
+        text-align: justify;
+        font-size: small;
+        font-weight: 100;
+        padding: 10px;
+        line-height: 2;
+        height: 70%;
+    }
+
+    & a{
+        text-decoration: none;
+        color: darkseagreen;
+        font-size: large;
+        
     }
 }
