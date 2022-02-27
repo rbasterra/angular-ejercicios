@@ -1,0 +1,39 @@
+<div class="container">
+    <h1>{{character?.name}}</h1>
+    <div class="character">
+        <span>
+            <img [src]="characterImg" alt="">
+        </span>
+        <span class="character__description">
+            <h2>Description</h2>
+            <p>{{ character?.description }}</p>
+        </span>
+    </div>
+
+    <div class="container__detail">
+        <nav>
+            <ul>
+                <li><h3>comics</h3></li>
+                <li><h3>series</h3></li>
+                <li><h3>events</h3></li>
+                <li><h3>stories</h3></li>
+            </ul>
+        </nav>
+
+        <!-- <div class="container__comic"
+            *ngFor="let item of character?.comics?.items"
+        >
+            {{item.name}}
+        </div> -->
+        <div class="container__comic">
+            <app-element
+                *ngFor="let element of elements"
+                [element]="element"
+            >
+
+            </app-element>
+
+        </div>
+    </div>
+
+</div>

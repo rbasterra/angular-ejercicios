@@ -1,0 +1,21 @@
+<ng-container *ngIf="element">
+
+    <div class="card__element"
+        (click)="elementClicked()"
+        [@elementFlip]="data.state"
+    >
+        <div class="face front">
+            <div class="card__title">
+                <h2>{{element.title}}</h2>
+            </div>
+            <img [src]="elementImg" alt="">
+        </div>
+        <div class="face back">
+            <p>{{element.description}}</p>
+            <a [href]="[elementUrl?.url]">More info</a>
+            <!-- <a [routerLink]="['/character',element.id]">More info</a> -->
+        </div>
+
+    </div>
+
+</ng-container>

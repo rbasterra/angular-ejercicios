@@ -11,12 +11,19 @@ export class CharacterListComponent implements OnInit {
 
   public characters: Character[] = [];
   public p: number = 1;
+  public totalCharacters: number = 0;
+  private offset: number = 0;
+
+  
 
   constructor(
     private marvelService: MarvelService
   ) { 
     
-      this.marvelService.getCharacters().subscribe( {next: result => this.characters = result.data.results as Character[],
+      this.marvelService.getCharacters(this.offset).subscribe( {next: result => {
+        this.characters = result.data.results as Character[]
+        this.totalCharacters = result.data.total as number;
+      },
         error: err => console.log(err)      
         })
     
@@ -31,7 +38,16 @@ export class CharacterListComponent implements OnInit {
   }
 
   public pageChangeEvent(event: number){
+    this.offset = (event-1) * this.characters.length
     this.p = event;
+
+    this.marvelService.getCharacters(this.offset).subscribe( {next: result => {
+      this.characters = result.data.results as Character[]
+      
+      
+    },
+      error: err => console.log(err)      
+      })
   }
 
   

@@ -12,7 +12,8 @@
         </div>
         <div class="face back">
             <p>{{character.description}}</p>
-            <a [href]="[characterUrl?.url]">More info</a>
+            <!-- <a [href]="[characterUrl?.url]">More info</a> -->
+            <a [routerLink]="['/character',character.id]">More info</a>
         </div>
 
     </div>

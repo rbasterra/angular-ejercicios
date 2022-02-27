@@ -1,6 +1,6 @@
 <div class="character-list">
     <app-character
-        *ngFor="let character of characters | paginate: {itemsPerPage:10, currentPage:p}"
+        *ngFor="let character of characters | paginate: {itemsPerPage:20, currentPage:p, totalItems: totalCharacters}"
         [character]="character"
     >
 
@@ -11,5 +11,7 @@
     <pagination-controls class="pagination-control" 
         (pageChange)="pageChangeEvent($event)"
         autoHide:true
+       
+        
     ></pagination-controls>
 </div>

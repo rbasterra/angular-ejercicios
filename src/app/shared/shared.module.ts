@@ -2,20 +2,23 @@ import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CharacterComponent } from './character/character.component';
+import { ElementComponent } from './element/element.component';
 
 
 
 
 @NgModule({
   declarations: [
-    CharacterComponent
+    CharacterComponent,
+    ElementComponent
   ],
   imports: [
     CommonModule,
     RouterModule,
   ],
   exports: [
-    CharacterComponent
+    CharacterComponent,
+    ElementComponent
   ]
 })
 export class SharedModule { }
