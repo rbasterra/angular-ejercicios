@@ -16,6 +16,8 @@ export class CharacterDetailComponent implements OnInit {
 
   public elements: any[] = [];
 
+  public selected: string = 'comics';
+
   constructor(
     private marvelService: MarvelService,
     private route: ActivatedRoute
@@ -35,6 +37,32 @@ export class CharacterDetailComponent implements OnInit {
 
   ngOnInit(): void {
 
+  }
+
+  public navClicked(event: Event){
+    
+    this.selected = (event.target as HTMLElement).innerText;
+    this.elements = [];
+
+    switch(this.selected){
+      case 'comics':
+        this.marvelService.getElements(this.character?.comics?.items).subscribe(res => res.map((ele:any) => this.elements.push(ele.data.results[0])));
+        
+        break
+      
+      case 'series':
+        this.marvelService.getElements(this.character?.series?.items).subscribe(res => res.map((ele:any) => this.elements.push(ele.data.results[0])));
+        break
+      
+      case 'events':
+        this.marvelService.getElements(this.character?.events?.items).subscribe(res => res.map((ele:any) => this.elements.push(ele.data.results[0])));
+        break
+
+      case 'stories':
+        this.marvelService.getElements(this.character?.stories?.items).subscribe(res => res.map((ele:any) => this.elements.push(ele.data.results[0])));
+        break
+    }
+    
   }
 
 }

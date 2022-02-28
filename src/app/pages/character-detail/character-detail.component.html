@@ -13,10 +13,10 @@
     <div class="container__detail">
         <nav>
             <ul>
-                <li><h3>comics</h3></li>
-                <li><h3>series</h3></li>
-                <li><h3>events</h3></li>
-                <li><h3>stories</h3></li>
+                <li (click)="navClicked($event)" [ngClass]="{'page-selected': selected ==='comics'}"><h3>comics</h3></li>
+                <li (click)="navClicked($event)" [ngClass]="{'page-selected': selected ==='series'}"><h3>series</h3></li>
+                <li (click)="navClicked($event)" [ngClass]="{'page-selected': selected ==='events'}"><h3>events</h3></li>
+                <li (click)="navClicked($event)" [ngClass]="{'page-selected': selected ==='stories'}"><h3>stories</h3></li>
             </ul>
         </nav>
 
