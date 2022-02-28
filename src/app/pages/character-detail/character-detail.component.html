@@ -20,19 +20,23 @@
             </ul>
         </nav>
 
-        <!-- <div class="container__comic"
-            *ngFor="let item of character?.comics?.items"
-        >
-            {{item.name}}
-        </div> -->
-        <div class="container__comic">
-            <app-element
-                *ngFor="let element of elements"
-                [element]="element"
-            >
+        <div class="container__element">
+            <input type="text" placeholder="Enter a name" [(ngModel)]="filter"/>
+        
+            <div class="container__comic">
+                
+                <app-element
+                    *ngFor="let element of (elements | marvelFilter: filter)"
+                    [element]="element"
+                >
 
-            </app-element>
+                </app-element>
 
+            </div>
+            
+            <footer>
+                <a href="http://marvel.com" [innerText]="attributionText"></a>
+            </footer>
         </div>
     </div>
 

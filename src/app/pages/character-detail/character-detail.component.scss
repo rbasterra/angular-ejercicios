@@ -20,6 +20,25 @@
         }
     }
 
+    &__element{
+        display:flex;
+        flex-flow: column wrap;
+        align-items: center;
+
+        & input{
+            margin: 1rem 0;
+        }
+
+        & footer{
+            margin: 2% 0;
+
+            & a{
+                color: #cacaca;
+                
+            }
+        }
+    }
+
     &__comic {
         display: flex;
         flex-flow: row wrap;

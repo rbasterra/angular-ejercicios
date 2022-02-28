@@ -1,3 +1,4 @@
+import { Element } from './../../models/Element/element.models';
 import { ElementCard } from './../../models/element.interface';
 import { Component, OnInit, Input } from '@angular/core';
 import { style, trigger, animate, transition, state } from '@angular/animations';
@@ -19,7 +20,7 @@ import { environment } from '../../../environments/environment';
 })
 export class ElementComponent implements OnInit {
 
-  @Input() public element?: any;
+  @Input() public element?: Element;
 
   public elementImg?: string;
   public elementUrl?: Url;
@@ -31,7 +32,7 @@ export class ElementComponent implements OnInit {
 
   ngOnInit(): void {
     this.elementImg = this.element?.thumbnail?.path + '/' + environment.imgSize + '.' + this.element?.thumbnail?.extension;
-    this.elementUrl = this.element?.urls?.find((url:any) => url.type==='detail');
+    this.elementUrl = this.element?.urls?.find((url:Url) => url.type==='detail');
     
     
   }

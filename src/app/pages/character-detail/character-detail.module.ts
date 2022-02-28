@@ -1,3 +1,7 @@
+import { CoreModule } from './../../core/core.module';
+
+
+import { FormsModule } from '@angular/forms';
 import { SharedModule } from './../../shared/shared.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -13,7 +17,9 @@ import { CharacterDetailComponent } from './character-detail.component';
   imports: [
     CommonModule,
     CharacterDetailRoutingModule,
-    SharedModule
+    SharedModule,
+    FormsModule,
+    CoreModule
   ]
 })
 export class CharacterDetailModule { }

@@ -1,3 +1,5 @@
+import { Element } from './../../models/Element/element.models';
+import { ElementItems } from './../../models/Element/elementItems.models';
 import { Character } from './../../models/Character/Character.models';
 import { CharacterDataWrapper } from './../../models/Character/CharacterDataWrapper.models';
 import { Observable, map, forkJoin } from 'rxjs';
@@ -51,6 +53,9 @@ export class MarvelService {
         })
       }
 
+      // const res: any[] = forkJoin(elements);
+      // console.log(res);
+      
       return forkJoin(elements);
     } 
 
