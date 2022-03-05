@@ -1,3 +1,4 @@
+import { FooterService } from './services/footer.service';
 import { HttpClientModule } from '@angular/common/http';
 import { MarvelService } from './services/marvel.service';
 import { NgModule } from '@angular/core';
@@ -11,7 +12,8 @@ import { MarvelFilterPipe } from './pipes/marvel-filter.pipe';
     MarvelFilterPipe
   ],
   providers:[
-    MarvelService
+    MarvelService,
+    FooterService
   ],
   imports: [
     CommonModule,

@@ -1,3 +1,4 @@
+import { FooterService } from './../../core/services/footer.service';
 import { Element } from './../../models/Element/element.models';
 
 import { Character } from './../../models/Character/Character.models';
@@ -20,12 +21,18 @@ export class CharacterListComponent implements OnInit {
   
 
   constructor(
-    private marvelService: MarvelService
+    private marvelService: MarvelService,
+    private footerService: FooterService
   ) { 
     
       this.marvelService.getCharacters(this.offset).subscribe( {next: result => {
         this.attributionText = result.attributionText;
+        this.footerService.setAttributionText(result.attributionText);
+        this.footerService.setAttributionHTML(result.attributionHTML);
+        console.log('attributionText en character-list: ' + this.footerService.getAttributionText());
+        
         this.totalCharacters = result.data.total as number;
+
         result.data.results?.map((character: Character) => this.elements.push({
           id: character.id,
           title: character.name,
@@ -56,6 +63,9 @@ export class CharacterListComponent implements OnInit {
 
     this.marvelService.getCharacters(this.offset).subscribe( {next: result => {
       this.attributionText = result.attributionText;
+      this.footerService.setAttributionText(result.attributionText);
+      this.footerService.setAttributionHTML(result.attributionHTML);
+
       result.data.results?.map((character: Character) => this.elements.push({
         id: character.id,
         title: character.name,

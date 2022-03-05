@@ -1,3 +1,4 @@
+import { FooterService } from './../../core/services/footer.service';
 import { Story } from './../../models/Story/Story.models';
 import { Events } from './../../models/Event/Event.models';
 import { Series } from './../../models/Series/Serie.models';
@@ -28,8 +29,13 @@ export class CharacterDetailComponent implements OnInit {
 
   constructor(
     private marvelService: MarvelService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private footerService: FooterService
   ) {
+
+      this.attributionText = this.footerService.getAttributionText();
+      console.log('attibutionText: ' + this.footerService.getAttributionText());
+      
       this.route.params.subscribe(params => {
         const characterId = params['id'];
        
