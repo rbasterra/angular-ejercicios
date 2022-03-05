@@ -1,7 +1,13 @@
+import { FooterService } from './../../core/services/footer.service';
+import { Story } from './../../models/Story/Story.models';
+import { Events } from './../../models/Event/Event.models';
+import { Series } from './../../models/Series/Serie.models';
+import { Comic } from './../../models/Comic/Comic.models';
+import { CharacterFull } from './../../models/Character/CharacterFull.models';
 import { Element } from './../../models/Element/element.models';
 import { ActivatedRoute } from '@angular/router';
 
-import { Character } from './../../models/Character/Character.models';
+
 import { MarvelService } from './../../core/services/marvel.service';
 import { Component, OnInit } from '@angular/core';
 
@@ -12,7 +18,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CharacterDetailComponent implements OnInit {
 
-  public character?: Character;
+  public character?: CharacterFull;
   public characterImg?: string;
 
   public elements: Element[] = [];
@@ -23,38 +29,34 @@ export class CharacterDetailComponent implements OnInit {
 
   constructor(
     private marvelService: MarvelService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private footerService: FooterService
   ) {
+
+      this.attributionText = this.footerService.getAttributionText();
+      console.log('attibutionText: ' + this.footerService.getAttributionText());
+      
       this.route.params.subscribe(params => {
         const characterId = params['id'];
-        this.marvelService.getCharacterById(characterId).subscribe({next: (res: Character) => {
+       
+        this.marvelService.getCharacterById(characterId).subscribe({next: (res: any) => {
+            console.log('en getCharacterById');
+          
+            console.log(res);
           
             this.characterImg = `${res.thumbnail?.path}.${res.thumbnail?.extension}`        
-            this.character = res
-            console.log(res);
-            
-            // this.marvelService.getElements(this.character.comics?.items).subscribe(res => res.map((ele: any) => this.elements.push(ele.data.results[0])))
-            // this.marvelService.getElements(this.character.comics?.items).subscribe(res => res.map((ele: Element) => this.elements.push(ele)))
-            this.marvelService.getElements(this.character.comics?.items).subscribe(res => {
-              this.attributionText = res[0].attributionText;  
-              console.log(this.attributionText);
-              console.log(res);
-              
-                          
-
-              res.map((ele: any) => {
-                const returnEle: Element = {
-                title: ele.data.results[0].title,
-                description: ele.data.results[0].description,
-                thumbnail: ele.data.results[0].thumbnail,
-                urls: ele.data.results[0].urls
-              }
-
-              this.elements.push(returnEle);
-
-            })})
-            
-          }})
+            this.character = res;
+             
+           
+            this.character?.comics?.map((comic: Comic) =>this.elements.push({
+              title: comic.title,
+              description: comic.description,
+              thumbnail: comic.thumbnail,
+              urls: comic.urls
+            }))            
+          },
+        error:err => console.log(err)
+        })
       })    
     }
 
@@ -69,67 +71,48 @@ export class CharacterDetailComponent implements OnInit {
 
     switch(this.selected){
       case 'comics':
-        // this.marvelService.getElements(this.character?.comics?.items).subscribe(res => res.map((ele:any) => this.elements.push(ele.data.results[0])));
-        this.marvelService.getElements(this.character?.comics?.items).subscribe(res => res.map((ele: any) =>  {
-          const returnEle: Element = {
-            title: ele.data.results[0].title,
-            description: ele.data.results[0].description,
-            thumbnail: ele.data.results[0].thumbnail,
-            urls: ele.data.results[0].urls
-          }
-
-          this.elements.push(returnEle);
-
-        }))
-        
+        if (this.character?.comics && this.character.comics.length > 0){
+          this.character?.comics?.map((comic: Comic) =>this.elements.push({
+            title: comic.title,
+            description: comic.description,
+            thumbnail: comic.thumbnail,
+            urls: comic.urls
+          }))
+        }        
         break
       
       case 'series':
-        // this.marvelService.getElements(this.character?.series?.items).subscribe(res => res.map((ele:any) => this.elements.push(ele.data.results[0])));
-        this.marvelService.getElements(this.character?.series?.items).subscribe(res => res.map((ele: any) =>  {
-          const returnEle: Element = {
-            title: ele.data.results[0].title,
-            description: ele.data.results[0].description,
-            thumbnail: ele.data.results[0].thumbnail,
-            urls: ele.data.results[0].urls
-          }
-
-          this.elements.push(returnEle);
-
-        }));
-
+        if (this.character?.series && this.character.series.length > 0){
+          this.character?.series?.map((serie:Series) => this.elements.push({
+            title: serie.title,
+            description: serie.description,
+            thumbnail: serie.thumbnail,
+            urls: serie.urls
+          }))
+        }
         break
       
       case 'events':
-        // this.marvelService.getElements(this.character?.events?.items).subscribe(res => res.map((ele:any) => this.elements.push(ele.data.results[0])));
-        this.marvelService.getElements(this.character?.events?.items).subscribe(res => res.map((ele: any) =>  {
-          const returnEle: Element = {
-            title: ele.data.results[0].title,
-            description: ele.data.results[0].description,
-            thumbnail: ele.data.results[0].thumbnail,
-            urls: ele.data.results[0].urls
-          }
-
-          this.elements.push(returnEle);
-
-        }));
-
+        
+        if (this.character?.events && this.character.events.length > 0){
+          this.character?.events?.map((event:Events) => this.elements.push({
+            title: event.title,
+            description: event.description,
+            thumbnail: event.thumbnail,
+            urls: event.urls
+          }))
+        }
         break
 
       case 'stories':
-        // this.marvelService.getElements(this.character?.stories?.items).subscribe(res => res.map((ele:any) => this.elements.push(ele.data.results[0])));
-        this.marvelService.getElements(this.character?.stories?.items).subscribe(res => res.map((ele: any) =>  {
-          const returnEle: Element = {
-            title: ele.data.results[0].title,
-            description: ele.data.results[0].description,
-            thumbnail: ele.data.results[0].thumbnail,
-            urls: ele.data.results[0].urls
-          }
 
-          this.elements.push(returnEle);
-
-        }));
-
+        if (this.character?.stories && this.character.stories.length > 0){
+          this.character.stories.map((story:Story) => this.elements.push({
+            title: story.title,
+            description: story.description,
+            thumbnail: story.thumbnail,
+          }))          
+        }
         break
     }
     
