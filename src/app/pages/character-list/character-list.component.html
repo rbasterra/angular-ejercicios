@@ -1,17 +1,26 @@
 <div class="character-list">
-    <app-character
+    <!-- <app-character
         *ngFor="let character of characters | paginate: {itemsPerPage:20, currentPage:p, totalItems: totalCharacters}"
         [character]="character"
     >
 
-    </app-character>
+    </app-character> -->
+    <app-element
+        *ngFor="let element of elements | paginate: {itemsPerPage:20, currentPage:p, totalItems: totalCharacters}"
+        [element]="element"
+    >
+
+    </app-element>
 </div>
 
-<div class="footer--page">
+<div class="footer">
     <pagination-controls class="pagination-control" 
         (pageChange)="pageChangeEvent($event)"
         autoHide:true
        
         
     ></pagination-controls>
+    <footer>
+        <a href="http://marvel.com" [innerText]="attributionText"></a>
+    </footer>
 </div>

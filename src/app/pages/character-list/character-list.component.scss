@@ -19,8 +19,22 @@
 //     color:white;
 // }
 
-.footer-page{
-    width:100%
+.footer{
+    width:100%;
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+
+    & footer{
+        margin: 2% 0;
+        
+
+        & a{
+            color: #cacaca;
+            
+            
+        }
+    }
 }
 
 .pagination-control{

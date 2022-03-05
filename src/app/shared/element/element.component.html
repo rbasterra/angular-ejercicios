@@ -12,7 +12,10 @@
         </div>
         <div class="face back">
             <p>{{element.description}}</p>
-            <a [href]="[elementUrl?.url]">More info</a>
+            <ng-container *ngIf="element.urls">
+                <a *ngIf="element.id" [routerLink]="['/character', element.id]">More info</a>
+                <a *ngIf="!element.id"[href]="[elementUrl?.url]">More info</a>
+            </ng-container>
             <!-- <a [routerLink]="['/character',element.id]">More info</a> -->
         </div>
 
