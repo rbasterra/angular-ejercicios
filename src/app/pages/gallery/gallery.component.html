@@ -1,7 +1,7 @@
-<div class="container">
-    <div class="container--card">
+<div class="containerDiv">
+    <div class="containerDiv--card">
         <!-- <div class="card" *ngFor="let avenger of avengersArray"> -->
-        <div class='card' [ngClass]="{'selected': avenger.isActive }" *ngFor="let avenger of avengersArray" (click) = select(avenger)>
+        <div class='cardElement' [ngClass]="{'selected': avenger.isActive }" *ngFor="let avenger of avengersArray" (click) = select(avenger)>
         
             <h2>{{avenger.hero}}</h2>
             <h3>{{avenger.name}}</h3>
@@ -9,7 +9,7 @@
             <a [href]="avenger.link">Show more info</a>
         </div>
     </div>
-    <div class="container-counter">
+    <div class="containerDiv-counter">
         <div *ngIf="!isHidden">
             En la lista no hay elementos activos
         </div>

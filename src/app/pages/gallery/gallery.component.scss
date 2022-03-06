@@ -1,4 +1,4 @@
-.container{
+.containerDiv{
 
     display:flex;
     flex-flow: column wrap;
@@ -13,6 +13,13 @@
         align-items: flex-start;
         margin:5px;
         font-family: 'Segoe UI';
+        // box-sizing: content-box;
+        // &:before{
+        //     box-sizing: content-box;
+        // }
+        // &:after{
+        //     box-sizing: content-box;
+        // }
     }
 
     &-counter{
@@ -24,13 +31,13 @@
     }
 }
 
-.card{
+.cardElement{
     width: 200px;
     height: 450px;
     display: flex;
     flex-flow: column wrap;
     align-items: center;
-
+    background-color: black;
     border:solid 5px;
     border-color: gray;
     padding: 5px;
@@ -40,6 +47,9 @@
     & h2{
         font-family: 'font-Megrim';
         color: goldenrod;
+        font-size: 1.5em;
+        margin: 0.5em;
+        // margin:1em;
         // color:darkgoldenrod;
     }
 
@@ -63,3 +73,6 @@
     border-color: lightgoldenrodyellow;
 }
 
+// *, *::before, *::after{
+//     box-sizing: content-box;
+// }

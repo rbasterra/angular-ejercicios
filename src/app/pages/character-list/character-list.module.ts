@@ -1,3 +1,4 @@
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 import { SharedModule } from '../../shared/shared.module';
 import { NgModule } from '@angular/core';
@@ -17,7 +18,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
     CommonModule,
     CharacterListRoutingModule,
     SharedModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    NgxSpinnerModule
   ]
 })
 export class CharacterListModule { }

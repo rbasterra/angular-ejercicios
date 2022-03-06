@@ -2,25 +2,25 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { CharacterListModule } from './pages/character-list/character-list.module';
 
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
-
-import { HeaderComponent } from './pages/header/header.component';
 import { HomeModule } from './pages/home/home.module';
 import { ContactModule } from './pages/contact/contact.module';
 import { GalleryModule } from './pages/gallery/gallery.module';
 import { CoreModule } from './core/core.module';
 import { NgxPaginationModule } from 'ngx-pagination';
 
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgxSpinnerModule } from 'ngx-spinner';
+
 
 @NgModule({
   declarations: [
-    AppComponent,
-    HeaderComponent,
+    AppComponent
     
   ],
   imports: [
@@ -32,8 +32,11 @@ import { NgxPaginationModule } from 'ngx-pagination';
     CoreModule,
     CharacterListModule,
     NgxPaginationModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    NgbModule,
+    NgxSpinnerModule
   ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [],
   bootstrap: [AppComponent]
 })

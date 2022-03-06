@@ -1,3 +1,4 @@
+import { NgxSpinnerModule } from 'ngx-spinner';
 import { CoreModule } from './../../core/core.module';
 
 
@@ -19,7 +20,8 @@ import { CharacterDetailComponent } from './character-detail.component';
     CharacterDetailRoutingModule,
     SharedModule,
     FormsModule,
-    CoreModule
+    CoreModule,
+    NgxSpinnerModule
   ]
 })
 export class CharacterDetailModule { }

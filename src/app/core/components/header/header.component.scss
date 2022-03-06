@@ -24,6 +24,7 @@ header{
         flex-flow: row wrap;
         justify-content: space-around;
         align-items: center;
+        margin: inherit;
 
         & a{
             
@@ -40,6 +41,8 @@ header{
     font-weight: bolder;
 }
 
+
+
 .icon {
     display: inline-block;
     width: 2em;
@@ -53,7 +56,24 @@ header{
     }
 }
 
-.icon-user-o {
-    // width: 0.857421875em;
-  }
+.modal{
+    &-title{
+        color: rgb(33, 37, 41);
+    }
+    &-body{
+        color: rgb(33, 37, 41);
+    }
+    &-footer{
+        justify-content: space-between;
+    }
+}
+
+.password{
+    margin-top:1rem;
+}
+
+.error, span{
+    font-size: small;
+    color: red;
+}
   

@@ -1,26 +1,44 @@
+import { ReactiveFormsModule } from '@angular/forms';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { RouterModule } from '@angular/router';
+import { LoaderInterceptor } from './interceptors/loader.interceptor';
 import { FooterService } from './services/footer.service';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { MarvelService } from './services/marvel.service';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MarvelFilterPipe } from './pipes/marvel-filter.pipe';
+import { HeaderComponent } from './components/header/header.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 
 
 @NgModule({
   declarations: [
-    MarvelFilterPipe
+    MarvelFilterPipe,
+    HeaderComponent,
+    FooterComponent
   ],
   providers:[
     MarvelService,
-    FooterService
+    FooterService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: LoaderInterceptor,
+      multi: true
+    }
   ],
   imports: [
     CommonModule,
-    HttpClientModule
+    HttpClientModule,
+    RouterModule,
+    NgbModule,
+    ReactiveFormsModule
   ],
   exports:[
-    MarvelFilterPipe
+    MarvelFilterPipe,
+    HeaderComponent,
+    FooterComponent
   ]
 })
 export class CoreModule { }

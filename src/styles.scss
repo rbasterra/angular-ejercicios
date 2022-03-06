@@ -1,3 +1,10 @@
+/* Importing Bootstrap SCSS file. */
+@import '~bootstrap/scss/bootstrap';
+
+*, *::before, *::after{
+    box-sizing: content-box;
+}
+
 /* You can add global styles to this file, and also import other style files */
 @font-face {
     font-family: font-Megrim;
@@ -7,10 +14,10 @@
 
 
 
-body{
+body {
     margin:0;
-    background-color: black;
-    color: white;    
+    background-color: black !important;
+    color: #cacaca !important;    
     
 }
 
@@ -30,13 +37,13 @@ body{
 
 .ngx-pagination{
     // background-color: rgb(122, 212, 87);
-    color: white;
+    color: #cacaca;
 }
 .ngx-pagination a{
-    color:white;
+    color:#cacaca;
 }
 .ngx-pagination li{
-    color:white;
+    color:#cacaca;
 }
 
 .ngx-pagination span{
@@ -47,5 +54,7 @@ body{
     color:#cacaca;
 }
 .current{
-    color:white;
+    color:#cacaca;
 }
+
+
