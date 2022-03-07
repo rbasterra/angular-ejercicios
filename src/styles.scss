@@ -17,7 +17,8 @@
 body {
     margin:0;
     background-color: black !important;
-    color: #cacaca !important;    
+    color: #cacaca !important;   
+    height: 100vh; 
     
 }
 
@@ -57,4 +58,11 @@ body {
     color:#cacaca;
 }
 
+app-root{
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-content: space-between;
+    justify-content: space-between;
+}
 

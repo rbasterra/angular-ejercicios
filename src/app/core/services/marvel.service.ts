@@ -17,13 +17,13 @@ export class MarvelService {
   public getCharacters(offset?:number): Observable<CharacterDataWrapper> {
     
     if (offset){
-    return this.httpClient.get(`${environment.baseApiUrl}characters`,{
+    return this.httpClient.get(`${environment.marvelApiUrl}characters`,{
       params:{
         'apikey': environment.marvelApiKey,
         'offset': offset
       }}) as Observable<CharacterDataWrapper>
     } else{
-        return this.httpClient.get(`${environment.baseApiUrl}characters`,{
+        return this.httpClient.get(`${environment.marvelApiUrl}characters`,{
           params:{
             'apikey': environment.marvelApiKey,
             
@@ -32,7 +32,7 @@ export class MarvelService {
   }
 
   // public getCharacterById(id: number): Observable<Character> {
-  //   return this.httpClient.get(`${environment.baseApiUrl}characters/${id}`,{
+  //   return this.httpClient.get(`${environment.marvelApiUrl}characters/${id}`,{
   //     params:{
   //       'apikey': environment.marvelApiKey
   //     }
@@ -40,7 +40,7 @@ export class MarvelService {
   // }
 
   public getCharacterById(id: number): Observable<CharacterFull> {
-    return this.httpClient.get(`${environment.baseApiUrl}characters/${id}`,{
+    return this.httpClient.get(`${environment.marvelApiUrl}characters/${id}`,{
       params:{
         'apikey': environment.marvelApiKey
       }
@@ -125,7 +125,7 @@ export class MarvelService {
   //   return forkJoin(elements);
   // } 
 
-  //   return this.httpClient.get(`${environment.baseApiUrl}characters`,{
+  //   return this.httpClient.get(`${environment.marvelApiUrl}characters`,{
   //     params:{
   //       'apikey': environment.marvelApiKey,
         

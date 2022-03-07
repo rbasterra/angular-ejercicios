@@ -1,3 +1,4 @@
+import { AuthService } from './../../../../e-comerce/src/app/core/services/auth.service';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RouterModule } from '@angular/router';
@@ -26,7 +27,8 @@ import { FooterComponent } from './components/footer/footer.component';
       provide: HTTP_INTERCEPTORS,
       useClass: LoaderInterceptor,
       multi: true
-    }
+    },
+    AuthService
   ],
   imports: [
     CommonModule,

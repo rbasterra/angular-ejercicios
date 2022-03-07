@@ -28,7 +28,7 @@
         <form
             *ngIf="loginForm"
             [formGroup]="loginForm"
-            
+            (submit)="loginUser($event)"
           >
           <div class="modal-body">
           
@@ -71,7 +71,11 @@
               <a href="./register.html" class="signUp ">Not registered? Sign up!</a>
 
             </div>
-            <button type="submit" class="btn btn-outline-dark" (click)="modal.close('Save click')" [disabled]="!loginForm.valid">Log in</button>
+            <!-- <button type="submit" class="btn btn-outline-dark" (click)="modal.close('Save click')" [disabled]="!loginForm.valid">Log in</button> -->
+            <button type="submit" class="btn btn-outline-dark" [disabled]="!loginForm.valid">Log in</button>
+            <div class="error" *ngIf="loginError">
+              {{loginErrorText}}
+            </div>
           </div>
         </form>
       </ng-template>

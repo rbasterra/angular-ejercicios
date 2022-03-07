@@ -1,3 +1,5 @@
+import { AuthService } from './../../services/auth.service';
+
 import { FormGroup, Validators, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
@@ -18,14 +20,18 @@ export class HeaderComponent implements OnInit {
   isActive: boolean = false;
   closeResult: string = '';
 
-  constructor(private router: Router, private modalService: NgbModal) { }
+  public loginError: boolean = false;
+  public loginErrorText: string = '';
+
+  constructor(private router: Router, private modalService: NgbModal, private authService: AuthService) { }
 
   ngOnInit(): void {
 
     this.loginForm = new FormGroup({
       email: new FormControl('', {validators: [Validators.required, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}')], updateOn:'blur'}),
-      password: new FormControl('',{validators: [Validators.required,Validators.pattern('(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}')], updateOn:'blur'})
+      password: new FormControl('',{validators: [Validators.required,Validators.pattern('(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}')], updateOn:'change'})
     });
+
   }
 
   public activateLink(item:string){
@@ -38,9 +44,13 @@ export class HeaderComponent implements OnInit {
     this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
       this.loginForm?.setValue({email: '', password:''});
+      this.loginError = false;
+      this.loginForm?.reset();
     }, (reason) => {
       this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
       this.loginForm?.setValue({email: '', password:''});
+      this.loginError = false;
+      this.loginForm?.reset();
     });
   }
 
@@ -52,6 +62,20 @@ export class HeaderComponent implements OnInit {
     } else {
       return `with: ${reason}`;
     }
+  }
+
+  public loginUser(event: Event){
+    event.preventDefault();
+
+    console.log(this.loginForm?.value);
+
+    this.authService.authenticateUser(this.loginForm?.value).subscribe({next: res => this.modalService.dismissAll('login'),
+      error: err => {
+        this.loginError = true;
+        this.loginErrorText = err.error;
+      }
+    })
+    
   }
 
 }
