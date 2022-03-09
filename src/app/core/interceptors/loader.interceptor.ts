@@ -6,7 +6,7 @@ import {
   HttpEvent,
   HttpInterceptor
 } from '@angular/common/http';
-import { finalize, Observable } from 'rxjs';
+import { debounceTime, finalize, Observable } from 'rxjs';
 
 @Injectable()
 export class LoaderInterceptor implements HttpInterceptor {
@@ -15,6 +15,6 @@ export class LoaderInterceptor implements HttpInterceptor {
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
     this.spinner.show();
-    return next.handle(request).pipe( finalize(()=> this.spinner.hide()));
+    return next.handle(request).pipe(finalize(()=> this.spinner.hide()));
   }
 }

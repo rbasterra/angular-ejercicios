@@ -1,8 +1,8 @@
-import { ContactComponent } from './pages/contact/contact.component';
+import { AuthUserGuard } from './core/guards/auth-user.guard';
+
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { GalleryComponent } from './pages/gallery/gallery.component';
-import { HomeComponent } from './pages/home/home.component';
+
 
 const routes: Routes = [
   {
@@ -28,17 +28,24 @@ const routes: Routes = [
   },
   {
     path: 'characters',
-    loadChildren: () => import('src/app/pages/character-list/character-list.module').then(m => m.CharacterListModule)
+    loadChildren: () => import('src/app/pages/character-list/character-list.module').then(m => m.CharacterListModule),
+    canActivate: [AuthUserGuard]
   },
   {
     path: 'character/:id',
-    loadChildren: () => import('src/app/pages/character-detail/character-detail.module').then(m => m.CharacterDetailModule)
+    loadChildren: () => import('src/app/pages/character-detail/character-detail.module').then(m => m.CharacterDetailModule),
+    canActivate: [AuthUserGuard]
+  },
+  {
+    path: 'signup',
+    loadChildren: () => import('src/app/pages/signup/signup.module').then(m => m.SignupModule)
   }
 
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  providers: [AuthUserGuard]
 })
 export class AppRoutingModule { }

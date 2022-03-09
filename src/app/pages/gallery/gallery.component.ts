@@ -14,7 +14,13 @@ export class GalleryComponent implements OnInit, OnDestroy {
   public isHidden: boolean = false;
 
 
-  constructor() { }
+  constructor() {
+    // console.log(document.cookie);
+    // let userData = localStorage.getItem('userInfo');
+    // console.log(userData);
+    
+    
+   }
 
   ngOnInit(): void {
     

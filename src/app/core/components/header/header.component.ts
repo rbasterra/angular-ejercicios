@@ -43,12 +43,12 @@ export class HeaderComponent implements OnInit {
   public open(content:any) {
     this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
-      this.loginForm?.setValue({email: '', password:''});
+      // this.loginForm?.setValue({email: '', password:''});
       this.loginError = false;
       this.loginForm?.reset();
     }, (reason) => {
       this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
-      this.loginForm?.setValue({email: '', password:''});
+      // this.loginForm?.setValue({email: '', password:''});
       this.loginError = false;
       this.loginForm?.reset();
     });
@@ -76,6 +76,12 @@ export class HeaderComponent implements OnInit {
       }
     })
     
+  }
+
+  public signUpClick(){
+    this.loginError = false;
+    this.loginForm?.reset();
+    this.modalService.dismissAll('sign up');
   }
 
 }

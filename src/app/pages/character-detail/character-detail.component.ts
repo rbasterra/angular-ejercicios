@@ -32,7 +32,7 @@ export class CharacterDetailComponent implements OnInit {
     private route: ActivatedRoute,
     private footerService: FooterService
   ) {
-
+      // debugger
       this.attributionText = this.footerService.getAttributionText();
       console.log('attibutionText: ' + this.footerService.getAttributionText());
       
