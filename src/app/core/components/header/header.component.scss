@@ -54,6 +54,10 @@ header{
     &:hover{
         cursor: pointer;
     }
+
+    &-logged{
+        fill: yellow;
+    }
 }
 
 .modal{

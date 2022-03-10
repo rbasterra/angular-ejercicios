@@ -1,8 +1,9 @@
+import { UserLogged } from './../../../models/User/User.models';
 import { AuthService } from './../../services/auth.service';
 
 import { FormGroup, Validators, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 
 
@@ -16,14 +17,20 @@ export class HeaderComponent implements OnInit {
 
   public loginForm?: FormGroup;
 
-  public navList: string[] =['Home', 'Gallery', 'Contact', 'Characters'];
+  public navList: string[] =['Home', 'Gallery', 'Characters', 'Contact'];
   isActive: boolean = false;
   closeResult: string = '';
 
   public loginError: boolean = false;
   public loginErrorText: string = '';
 
-  constructor(private router: Router, private modalService: NgbModal, private authService: AuthService) { }
+  public user?: UserLogged;
+  public userLoggedClass: string = 'icon icon-user-o';
+
+  public isCollapsed = true;
+
+  constructor(private router: Router, private modalService: NgbModal, private authService: AuthService) { 
+  }
 
   ngOnInit(): void {
 
@@ -32,7 +39,21 @@ export class HeaderComponent implements OnInit {
       password: new FormControl('',{validators: [Validators.required,Validators.pattern('(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}')], updateOn:'change'})
     });
 
+    this.authService.userAuthenticated.subscribe(user =>{
+      this.userLoggedClass = user?._id ? this.userLoggedClass + ' icon-logged' : this.userLoggedClass;
+    })
+
+    this.userLoggedClass = this.authService.isAuthenticated() ? this.userLoggedClass + ' icon-logged' : this.userLoggedClass;
+
   }
+
+  // ngAfterViewInit(): void {
+
+  //   this.authService.isAuthenticated() ? this.userLoggedClass + ' icon-logged' : this.userLoggedClass
+  //   // this.authService.isAuthenticated() ? console.log('condicion') : this.userLoggedClass
+  //   console.log(this.userLoggedClass);
+    
+  // }
 
   public activateLink(item:string){
     return this.router.url === '/'+item.toLowerCase();

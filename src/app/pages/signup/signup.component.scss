@@ -1,0 +1,39 @@
+.error, span{
+    font-size: medium;
+    color: rgb(238, 97, 97);
+    text-align: justify;
+}
+
+/* Chrome, Safari, Edge, Opera */
+ input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+-webkit-appearance: none;
+margin: 0;
+}
+
+/* Firefox */
+ input[type=number] {
+-moz-appearance: textfield;
+}
+
+.container{
+    
+    &__title{
+        text-align: center;
+        font-size: xx-large;
+
+        & span{
+            font-family: 'font-Megrim';
+            font-size:5rem;
+        }
+    }
+
+}
+
+.row{
+    justify-content: space-around;
+}
+
+.btn{
+    width: 100%;
+}

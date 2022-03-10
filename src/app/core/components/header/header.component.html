@@ -18,7 +18,69 @@
 
         </ul>
     </nav>
-    <svg (click)="open(content)" class="icon icon-user-o"><use xlink:href="../../assets/Icons/symbol-defs.svg#icon-user-o"></use></svg>
+    <svg (click)="open(content)" [class]="userLoggedClass"><use xlink:href="../../assets/Icons/symbol-defs.svg#icon-user-o"></use></svg>
+    
+    <svg (click)="collapse.toggle()" [class]="userLoggedClass"><use xlink:href="../../assets/Icons/symbol-defs.svg#icon-user-o"></use></svg>
+    <div #collapse="ngbCollapse" [(ngbCollapse)]="isCollapsed" class="row">
+      <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Login</h4>
+        <button type="button" class="btn-close" aria-label="Close" ></button>
+      </div>
+      <form
+          *ngIf="loginForm"
+          [formGroup]="loginForm"
+          (submit)="loginUser($event)"
+        >
+        <div class="modal-body">
+        
+          <div class="row gy-3">
+            <div class="col-10">
+              <label for="email" class="form-label">Email<span>*</span></label>
+              <input class="form-control" type="email" placeholder="Email" formControlName="email" id="email">
+              <div class="error"
+                  *ngIf="!loginForm.get('email')?.valid
+                  && loginForm.get('email')?.dirty && loginForm.get('email')?.errors?.['required']"
+              >
+                  Required field
+              </div>
+              <div class="error"
+                  *ngIf="!loginForm.get('email')?.valid
+                  && loginForm.get('email')?.dirty && loginForm.get('email')?.errors?.['pattern']"
+              >
+                  Wrong email format
+              </div>
+            </div>
+          </div>
+          <div class="row password">
+            <div class="col-10">
+              <label for="password" class="form-label">Password<span>*</span></label>
+              <input class="form-control" type="password" placeholder="password" formControlName="password" id="password">
+              <div class="error"
+                  *ngIf="!loginForm.get('password')?.valid
+                  && loginForm.get('password')?.dirty && loginForm.get('password')?.errors?.['pattern']"
+              >
+              Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters
+              </div>
+            </div>
+
+          </div>
+          
+        
+        </div>
+        <div class="modal-footer">
+          <div class="" id="divSignUp">
+            <a [routerLink]="['/', 'signup']" class="signUp" (click)="signUpClick()">Not registered? Sign up!</a>
+
+          </div>
+          <!-- <button type="submit" class="btn btn-outline-dark" (click)="modal.close('Save click')" [disabled]="!loginForm.valid">Log in</button> -->
+          <button type="submit" class="btn btn-outline-dark" [disabled]="!loginForm.valid">Log in</button>
+          
+        </div>
+        <div class="error loginError" *ngIf="loginError">
+          {{loginErrorText}}
+        </div>
+      </form>
+    </div>
 
     <ng-template #content let-modal>
         <div class="modal-header">
