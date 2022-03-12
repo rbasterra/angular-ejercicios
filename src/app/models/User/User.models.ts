@@ -3,13 +3,34 @@ export interface User {
     password: string
 }
 
-export interface UserLoginRes {
-    createdAt: Date,
-    email: string,
-    lastname: string,
+
+
+export interface UserSignUp {
     name: string,
-    password: string | null,
-    updatedAt: Date,
+    lastname: string,
+    email: string,
+    password: string,
+    phone: number,
+    birthdate: Date,
+    address: string,
+    city: string,
+    postal_code: number,
+    province: string
+}
+
+export interface UserLogged {
+    name: string,
+    lastname: string,
+    email: string,
+    password?: string,
+    phone?: number,
+    birthdate?: Date,
+    address?: string,
+    city?: string,
+    postal_code?: number,
+    province?: string,
     __v: number,
-    _id: string
+    _id: string,
+    createdAt?: Date,
+    updatedAt?: Date
 }
