@@ -1,4 +1,4 @@
-import { AuthService } from './../../../../e-comerce/src/app/core/services/auth.service';
+
 import { ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RouterModule } from '@angular/router';
@@ -11,6 +11,7 @@ import { CommonModule } from '@angular/common';
 import { MarvelFilterPipe } from './pipes/marvel-filter.pipe';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { AuthService } from './services/auth.service';
 
 
 
