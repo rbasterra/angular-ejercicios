@@ -1,3 +1,4 @@
+import { Observable } from 'rxjs';
 import { UserLogged } from './../../../models/User/User.models';
 import { AuthService } from './../../services/auth.service';
 
@@ -45,6 +46,9 @@ export class HeaderComponent implements OnInit {
 
     this.userLoggedClass = this.authService.isAuthenticated() ? this.userLoggedClass + ' icon-logged' : this.userLoggedClass;
 
+    this.user = this.authService.getUserInfo();    
+    
+
   }
 
   // ngAfterViewInit(): void {
@@ -90,19 +94,47 @@ export class HeaderComponent implements OnInit {
 
     console.log(this.loginForm?.value);
 
-    this.authService.authenticateUser(this.loginForm?.value).subscribe({next: res => this.modalService.dismissAll('login'),
+    // this.authService.authenticateUser(this.loginForm?.value).subscribe({next: res => this.modalService.dismissAll('login'),
+    //   error: err => {
+    //     this.loginError = true;
+    //     this.loginErrorText = err.error;
+    //   }
+    // })
+    
+    this.authService.authenticateUser(this.loginForm?.value).subscribe({next: (res: UserLogged) => {
+      this.user = res;      
+      this.isCollapsed = !this.isCollapsed
+      this.loginError = false;
+      this.loginForm?.reset();
+    },
       error: err => {
         this.loginError = true;
         this.loginErrorText = err.error;
       }
     })
-    
+
   }
 
   public signUpClick(){
+    this.isCollapsed = !this.isCollapsed;
     this.loginError = false;
     this.loginForm?.reset();
-    this.modalService.dismissAll('sign up');
+    // this.modalService.dismissAll('sign up');
+  }
+
+  public clickCollapse(){
+    this.isCollapsed = !this.isCollapsed;
+  }
+
+  public logOut(){
+    this.authService.logOutUser(this.user);
+    this.isCollapsed = !this.isCollapsed;
+    this.userLoggedClass = this.userLoggedClass.slice(0, this.userLoggedClass.indexOf(' icon-logged'));
+    this.user = undefined;
+    
+    
+    
+    // this.userLoggedClass = this.authService.isAuthenticated() ? this.userLoggedClass + ' icon-logged' : this.userLoggedClass;
   }
 
 }

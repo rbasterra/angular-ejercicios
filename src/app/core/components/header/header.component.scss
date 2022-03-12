@@ -2,15 +2,13 @@ header{
 
     background-color: #202020;
     color: white;
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: space-around;
-    align-items: center;
+    
     font-size: larger;
 
     font-family: 'font-Megrim';
+    width: 100%;
 
-    
+   
 
     & nav{
         width:50%;
@@ -36,6 +34,70 @@ header{
     
 }
 
+.header {
+
+    &__row{
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: space-around;
+        align-items: center;
+        width:100%;
+    }   
+}
+
+.login {
+    width: 50%;
+    color: #cacaca;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif, 'Roboto';
+    font-size: medium;
+}
+
+@media  (max-width: 425px) {
+    .login {
+        width: 100%
+    }
+}
+
+@media  (min-width:768px) and  (max-width: 1024px) {
+    .login {
+        width: 50%
+    }
+}
+
+@media  (min-width: 1200px) {
+    .login {
+        width: 25%
+    }
+}
+
+.modal{
+    &-title{
+       font-size: xlarge;
+    }
+    // &-body{
+    //     color: rgb(33, 37, 41);
+    // }
+    &-footer{
+        justify-content: space-between;
+    }
+}
+
+.btn-close{
+    color: #cacaca;
+}
+
+.signUp {
+    color: #cacaca;
+}
+
+.collapse-container {
+    // width: 100%; 
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+}
+
+
 .page-selected{
     text-shadow: 5px 5px 25px yellow, 5px 5px 25px yellow;
     font-weight: bolder;
@@ -60,25 +122,26 @@ header{
     }
 }
 
-.modal{
-    &-title{
-        color: rgb(33, 37, 41);
-    }
-    &-body{
-        color: rgb(33, 37, 41);
-    }
-    &-footer{
-        justify-content: space-between;
-    }
-}
+// .modal{
+//     &-title{
+//         color: rgb(33, 37, 41);
+//     }
+//     &-body{
+//         color: rgb(33, 37, 41);
+//     }
+//     &-footer{
+//         justify-content: space-between;
+//     }
+// }
 
 .password{
     margin-top:1rem;
 }
 
 .error, span{
-    font-size: small;
-    color: red;
+    font-size: medium;
+    color: rgb(238, 97, 97);
+    text-align: justify;
 }
 
 .loginError{

@@ -22,7 +22,7 @@ export interface UserLogged {
     name: string,
     lastname: string,
     email: string,
-    password: string,
+    password?: string,
     phone?: number,
     birthdate?: Date,
     address?: string,
@@ -31,6 +31,6 @@ export interface UserLogged {
     province?: string,
     __v: number,
     _id: string,
-    createdAt: Date,
-    updatedAt: Date
+    createdAt?: Date,
+    updatedAt?: Date
 }
