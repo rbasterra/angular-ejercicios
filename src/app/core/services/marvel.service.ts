@@ -1,3 +1,4 @@
+import { ComicSummary } from './../../models/Comic/ComicSummary.models';
 import { CharacterFull } from './../../models/Character/CharacterFull.models';
 import { CharacterDataWrapper } from './../../models/Character/CharacterDataWrapper.models';
 import { Observable, map, forkJoin, switchMap } from 'rxjs';
@@ -46,6 +47,9 @@ export class MarvelService {
       }
     }).pipe(map((res: any) => res.data.results[0]), switchMap((res) =>{
       if (!(res.comics.items ===0)){
+        res.comics.items.forEach((item:ComicSummary) => {
+          res.comics.item.resourceURI= res.comics.item.resourceURI.replace(/^http:\/\//i, 'https://');
+       })
         return forkJoin(this.getElements(res.comics.items)).pipe(map((comics:any) => {
           return {...res, comics: comics.map((comic:any) => comic.data.results[0])}
         }))
