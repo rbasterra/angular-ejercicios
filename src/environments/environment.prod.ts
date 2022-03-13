@@ -4,4 +4,5 @@ export const environment = {
   marvelApiUrl: 'https://gateway.marvel.com/v1/public/',
   imgSize: 'portrait_fantastic',
   userApiUrl: 'https://angular-project-server.herokuapp.com'
+  
 };

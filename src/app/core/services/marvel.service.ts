@@ -1,4 +1,4 @@
-import { ComicSummary } from './../../models/Comic/ComicSummary.models';
+
 import { CharacterFull } from './../../models/Character/CharacterFull.models';
 import { CharacterDataWrapper } from './../../models/Character/CharacterDataWrapper.models';
 import { Observable, map, forkJoin, switchMap } from 'rxjs';
@@ -16,7 +16,6 @@ export class MarvelService {
   ) { }
 
   public getCharacters(offset?:number): Observable<CharacterDataWrapper> {
-    
     if (offset){
     return this.httpClient.get(`${environment.marvelApiUrl}characters`,{
       params:{

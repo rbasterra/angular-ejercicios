@@ -1,0 +1,40 @@
+.container {
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: space-around;
+    align-items: center;
+    // height: 100vh;
+    text-align: justify;
+
+    & p {
+        width: 90%;
+    }
+
+    & li {
+        width: 90%;
+    }
+
+    &__info{
+        margin-top: 5%;
+
+        & h2 {
+            padding: 2% 0;
+        }
+    }
+}
+
+h1 {
+    & span{
+        font-family: 'font-Megrim';
+        font-size:5rem;
+        color: rgb(238, 97, 97);
+        text-align: center;
+
+    }
+}
+
+.list {
+    &__title{
+        font-weight: bolder;
+    }
+}

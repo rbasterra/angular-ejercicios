@@ -1,4 +1,53 @@
-<p>home works!</p>
+<div class="container">
+    <h1>Welcome to <span>MarvelService</span></h1>
 
+    <div class="container__info">
+
+        <p>MarvelService is an angular application based on what we learnt in Upgrade Hub's bootcamp.</p>
+        <p>The angular application contains guards, interceptors (spinner during http requests and switch http to https requests), reactive forms with built-in and custom validators. 
+            It also contains a login page, using localStorage to store the user's data, and a register form. Some functionality is still missing but
+            it'll be added in future iteations.
+        </p>
+        <p>MarvelService uses two APIs to request data from: </p>
+        <ul>
+            <li>Marvel API: Main API to request information about Marvel Comic characters and related information</li>
+            <li>User API: custom node backend server to implement the user login/register functionality</li>
+        </ul>
+        <h2>Sections</h2>
+        <p>MarvelService is composed of a common header and footer page plus the following sections:</p>
+        <ul>
+            <li>
+                <span class="list__title">Home:</span> Landing page of the angular app
+            </li>
+            <li><span class="list__title">Gallery:</span> Implementation of the gallery exercise with Marvel movie characters. Cards contain a title, subtitle, image and link. Cards
+                are marked in golden rod colour when selected and a bottom-page counter counts the cards selected.
+            </li>
+            <li><span class="list__title">Characters:</span> Main page of the application. It requests a list of comic characters to the Marvel API. It contains a pagination element
+                to move between pages. Character cards are illuminated when hovering over them. Cards are also flipable. When available, it will display more
+                information about the specific character. The back of the card contains a link to a detail view of the character with information about the 
+                comics, series, events and stories the character appears in.
+            </li>
+            <li><span class="list__title">Contact:</span> The contact section contains a reactive form with built-in and custom validators. It does not offer more functionality than that</li>
+        </ul>
+
+        <h2>Usage</h2>
+        <p>The main Characters section requires authentication. You can log in using the icon on the right-hand top corner. If you don't have an account yet
+            you can register using the link in the 'Collapse' element (login icon).
+        </p>
+        <p>When you register with MarvelService you are automatically signed in to the application. Your user data will be stored in the user backend service 
+            and in the browser's localStorage.
+        </p>
+        <h2>To-Do</h2>
+        <p>MarvelService is an ongoing effort with some missing functionality and styles. Some of the pending functionality are:</p>
+        <ul>
+            <li>Add user info to the login component when the user is logged</li>
+            <li>Create a user info page with detailed information where the user can update his/her data</li>
+            <li>A user's session is stored in the localStorage but the session might have expired in the backend. Need to add the right checks to 
+                make sure a user's session is still valid when returning to the application.
+            </li>
+        </ul>
+    </div>
+
+</div>
 
 
