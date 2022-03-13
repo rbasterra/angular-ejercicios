@@ -1,3 +1,4 @@
+import { SecureHttpInterceptor } from './interceptors/secure-http.interceptor';
 
 import { ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -24,6 +25,11 @@ import { AuthService } from './services/auth.service';
   providers:[
     MarvelService,
     FooterService,
+    {
+      provide:HTTP_INTERCEPTORS,
+      useClass: SecureHttpInterceptor,
+      multi:true
+    },
     {
       provide: HTTP_INTERCEPTORS,
       useClass: LoaderInterceptor,
