@@ -47,16 +47,13 @@ export class MarvelService {
       }
     }).pipe(map((res: any) => res.data.results[0]), switchMap((res) =>{
       if (!(res.comics.items ===0)){
-        res.comics.items.forEach((item:ComicSummary) => {
-          res.comics.item.resourceURI= res.comics.item.resourceURI.replace(/^http:\/\//i, 'https://');
-       })
         return forkJoin(this.getElements(res.comics.items)).pipe(map((comics:any) => {
           return {...res, comics: comics.map((comic:any) => comic.data.results[0])}
         }))
       }else return forkJoin(this.getElements(undefined, res.comics.collectionURI)).pipe(map(() => res))
     }), 
     switchMap((res) => {
-      if (!(res.events.items.length === 0)){
+      if (!(res.events.items.length === 0)){        
        return forkJoin(this.getElements(res.events.items)).pipe(map((events:any) => {
         return {...res, events: events.map( (event:any) => event.data.results[0])}}))
       } else return forkJoin(this.getElements(undefined, res.events.collectionURI)).pipe(map(() => res))
