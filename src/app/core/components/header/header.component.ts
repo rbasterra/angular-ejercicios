@@ -132,17 +132,17 @@ export class HeaderComponent implements OnInit {
     
     
     this.authService.logOutUser(this.user).subscribe({next: res => {
-      this.isCollapsed = !this.isCollapsed;
-      this.userLoggedClass = this.userLoggedClass.slice(0, this.userLoggedClass.indexOf(' icon-logged'));
-      this.user = undefined;
+      // this.isCollapsed = !this.isCollapsed;
+      // this.userLoggedClass = this.userLoggedClass.slice(0, this.userLoggedClass.indexOf(' icon-logged'));
+      // this.user = undefined;
     },
     error: err => console.log(err)
     
     });
 
-    // this.isCollapsed = !this.isCollapsed;
-    //   this.userLoggedClass = this.userLoggedClass.slice(0, this.userLoggedClass.indexOf(' icon-logged'));
-    //   this.user = undefined;
+      this.isCollapsed = !this.isCollapsed;
+        this.userLoggedClass = this.userLoggedClass.slice(0, this.userLoggedClass.indexOf(' icon-logged'));
+        this.user = undefined;
     
     
     
