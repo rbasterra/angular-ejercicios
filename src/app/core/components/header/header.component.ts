@@ -1,4 +1,4 @@
-import { Observable } from 'rxjs';
+
 import { UserLogged } from './../../../models/User/User.models';
 import { AuthService } from './../../services/auth.service';
 
@@ -6,6 +6,7 @@ import { FormGroup, Validators, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+
 
 
 @Component({
@@ -113,6 +114,7 @@ export class HeaderComponent implements OnInit {
       }
     })
 
+
   }
 
   public signUpClick(){
@@ -127,10 +129,21 @@ export class HeaderComponent implements OnInit {
   }
 
   public logOut(){
-    this.authService.logOutUser(this.user);
-    this.isCollapsed = !this.isCollapsed;
-    this.userLoggedClass = this.userLoggedClass.slice(0, this.userLoggedClass.indexOf(' icon-logged'));
-    this.user = undefined;
+    
+    
+    this.authService.logOutUser(this.user).subscribe({next: res => {
+      this.isCollapsed = !this.isCollapsed;
+      this.userLoggedClass = this.userLoggedClass.slice(0, this.userLoggedClass.indexOf(' icon-logged'));
+      this.user = undefined;
+    },
+    error: err => console.log(err)
+    
+    });
+
+    // this.isCollapsed = !this.isCollapsed;
+    //   this.userLoggedClass = this.userLoggedClass.slice(0, this.userLoggedClass.indexOf(' icon-logged'));
+    //   this.user = undefined;
+    
     
     
     
