@@ -140,9 +140,9 @@ export class HeaderComponent implements OnInit {
     
     });
 
-      this.isCollapsed = !this.isCollapsed;
-        this.userLoggedClass = this.userLoggedClass.slice(0, this.userLoggedClass.indexOf(' icon-logged'));
-        this.user = undefined;
+    this.isCollapsed = !this.isCollapsed;
+    this.userLoggedClass = this.userLoggedClass.slice(0, this.userLoggedClass.indexOf(' icon-logged'));
+    this.user = undefined;
     
     
     

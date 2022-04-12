@@ -39,6 +39,11 @@ const routes: Routes = [
   {
     path: 'signup',
     loadChildren: () => import('src/app/pages/signup/signup.module').then(m => m.SignupModule)
+  },
+  {
+    path: 'account',
+    loadChildren: () => import('src/app/pages/user-account/user-account.module').then(m => m.UserAccountModule),
+    canActivate: [AuthUserGuard]
   }
 
 ];

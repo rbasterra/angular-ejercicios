@@ -1,0 +1,27 @@
+.container{
+    margin: 5%;
+}
+
+.form-label {
+    text-transform: capitalize;
+    padding-top: 1.5rem;
+    display: block;
+}
+
+.form-control{
+    width: 20%;
+    display: inline-block;
+    margin-right: 1rem;
+}
+
+.updateButton {
+    margin-top:1.5rem;
+    width:10rem;
+    height:2rem;
+}
+
+.error, span{
+    font-size: medium;
+    color: rgb(238, 97, 97);
+    text-align: justify;
+}

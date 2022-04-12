@@ -5,17 +5,17 @@ export interface User {
 
 
 
-export interface UserSignUp {
+export interface UserDetails {
     name: string,
     lastname: string,
     email: string,
-    password: string,
-    phone: number,
-    birthdate: Date,
-    address: string,
-    city: string,
-    postal_code: number,
-    province: string
+    password?: string,
+    phone?: number,
+    birthdate?: Date,
+    address?: string,
+    city?: string,
+    postal_code?: number,
+    province?: string
 }
 
 export interface UserLogged {
