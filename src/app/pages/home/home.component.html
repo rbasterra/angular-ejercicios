@@ -11,7 +11,7 @@
         <p>MarvelService uses two APIs to request data from: </p>
         <ul>
             <li>Marvel API: Main API to request information about Marvel Comic characters and related information</li>
-            <li>User API: custom node backend server to implement the user login/register functionality</li>
+            <li>User API: custom nodejs backend server to implement the user login/register functionality</li>
         </ul>
         <h2>Sections</h2>
         <p>MarvelService is composed of a common header and footer page plus the following sections:</p>
@@ -37,11 +37,13 @@
         <p>When you register with MarvelService you are automatically signed in to the application. Your user data will be stored in the user backend service 
             and in the browser's localStorage.
         </p>
+        <p>
+            A user can update his/her data in the account settings page, accessible via the login icon, on the right-hand top corner.
+        </p>
         <h2>To-Do</h2>
         <p>MarvelService is an ongoing effort with some missing functionality and styles. Some of the pending functionality are:</p>
         <ul>
             <li>Add user info to the login component when the user is logged</li>
-            <li>Create a user info page with detailed information where the user can update his/her data</li>
             <li>A user's session is stored in the localStorage but the session might have expired in the backend. Need to add the right checks to 
                 make sure a user's session is still valid when returning to the application.
             </li>

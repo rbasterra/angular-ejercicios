@@ -1,3 +1,4 @@
+import { UserAccountModule } from './pages/user-account/user-account.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { CharacterListModule } from './pages/character-list/character-list.module';
@@ -34,7 +35,8 @@ import { NgxSpinnerModule } from 'ngx-spinner';
     NgxPaginationModule,
     BrowserAnimationsModule,
     NgbModule,
-    NgxSpinnerModule
+    NgxSpinnerModule,
+    UserAccountModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [],

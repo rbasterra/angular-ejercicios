@@ -1,0 +1,41 @@
+<div class="container">
+    <div>
+        <h1>Hi {{user?.name}} {{user?.lastname}}</h1>
+        <p>These are the details we have in our database. Please, ammend any error or provide more information.</p>
+    </div>
+
+    <form
+        *ngIf="userForm" 
+        [formGroup]="userForm"
+        (ngSubmit)="updateUserInfo($event)"
+    >
+      
+
+        <label for="email" class="form-label">email</label>
+        <!-- <input class="form-control" type="text" id=email [value]=user.email [disabled]="true"> -->
+        <input class="form-control" type="email" id="email" formControlName="email" >
+
+        <!-- <button type="button" (click)="enableInputTest($event)" id="email">Modify</button> -->
+
+        <div *ngFor="let key of objectKeys">
+            
+            <label [for]=key class="form-label">{{key}}</label>
+            <!-- <input class="form-control" type="text" [formControlName]=key [placeholder]=key [id]=key [value]=user[key] [disabled]="true"> -->
+            <input class="form-control" type="text" [formControlName]=key [placeholder]=key [id]=key>
+
+            <button type="button" (click)="enableInput($event)" [id]=key>Modify</button>
+        </div>
+
+        <button type="submit" class="updateButton">Update</button>
+
+        <!-- <div class="error"
+        *ngIf="!userForm.get('password')?.valid
+        && userForm.get('password')?.dirty && userForm.get('password')?.errors?.['pattern']"
+        > -->
+        <div class="error"
+        *ngIf="pwdError"
+        >
+        Password must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters
+        </div>
+    </form>
+</div>
