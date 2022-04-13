@@ -25,6 +25,7 @@ import { AuthService } from './services/auth.service';
   providers:[
     MarvelService,
     FooterService,
+    AuthService,
     {
       provide:HTTP_INTERCEPTORS,
       useClass: SecureHttpInterceptor,
@@ -34,8 +35,8 @@ import { AuthService } from './services/auth.service';
       provide: HTTP_INTERCEPTORS,
       useClass: LoaderInterceptor,
       multi: true
-    },
-    AuthService
+    }
+    
   ],
   imports: [
     CommonModule,
